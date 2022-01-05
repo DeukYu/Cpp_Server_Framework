@@ -1,36 +1,53 @@
 ﻿#include "pch.h"
 #include <iostream>
 #include <thread>
+#include <atomic>
+#include <mutex>
 
-void HelloThread()
-{
-	cout << "Hello Thread" << endl;
-}
+vector<int32>	v;
+// Mutual Exclusive (상호베타적)
+mutex m;
 
-void HelloThread_2(int32 num)
+// RAII (Resource Acquisition is Initialization)
+template<typename T>
+class LockGuard
 {
-	cout << num << endl;
+public:
+	LockGuard(T& m)
+	{
+		_mutex = &m;
+		_mutex->lock();
+	}
+
+	~LockGuard()
+	{
+		_mutex->unlock();
+	}
+private:
+	T* _mutex;
+};
+
+void Push()
+{
+	for (int32 i = 0; i < 10'000; ++i)
+	{
+		//std::lock_guard<std::mutex>	lockGuard(m);
+		std::unique_lock<std::mutex>	uniqueLock(m, std::defer_lock);
+		uniqueLock.lock();
+		if (i == 5000)
+		{
+			break;
+		}
+	}
 }
 
 int main()
 {
-	std::thread t;
+	std::thread t1(Push);
+	std::thread t2(Push);
 
-	vector<std::thread> v;
+	t1.join();
+	t2.join();
 
-	auto id1 = t.get_id();	// 쓰레드마다 id
-
-	for (int32 i = 0; i < 10; ++i)
-	{
-		v.push_back(std::thread(HelloThread_2, i));
-	}
-	
-	int32 count = t.hardware_concurrency();	// CPU 코어 개수?
-	auto id2 = t.get_id();	// 쓰레드마다 id
-	cout << "Hello Main" << endl;
-	for (int32 i = 0; i < 10; ++i)
-	{
-		if (v[i].joinable())
-			v[i].join();
-	}
+	cout << v.size() << endl;
 }
