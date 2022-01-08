@@ -1,3 +1,2 @@
 ﻿  GameServer.cpp
-C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\GameServer\GameServer.cpp(50,9): warning C4553: '==': 식의 결과가 사용되지 않습니다. '='을(를) 의도했습니까?
   GameServer.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Binary\Debug\GameServer.exe
