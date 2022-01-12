@@ -5,43 +5,27 @@
 #include <mutex>
 #include <windows.h>
 #include <future>
+#include "CoreMacro.h"
+#include "ThreadManager.h"
 
-int32 buffer[10'000][10'000];
+CoreGlobal	Core;
+
+void ThreadMain()
+{
+	while (true)
+	{
+		cout << "Hello ! I am thread... " << LThreadId << endl;
+		this_thread::sleep_for(1s);
+	}
+
+}
 
 int main()
 {
-	memset(buffer, 0, sizeof(buffer));
-
+	for (int32 i = 0; i < 5; ++i)
 	{
-		uint64 start = GetTickCount64();
-
-		int64	sum = 0;
-
-		for (int32 i = 0; i < 10'000; ++i)
-		{
-			for (int32 j = 0; j < 10'000; ++j)
-			{
-				sum += buffer[i][j];
-			}
-		}
-
-		uint64 end = GetTickCount64();
-		cout << "Elapsed Tick" << (end - start) << endl;
+		GThreadManager->Launch(ThreadMain);
 	}
-	{
-		uint64 start = GetTickCount64();
 
-		int64	sum = 0;
-
-		for (int32 i = 0; i < 10'000; ++i)
-		{
-			for (int32 j = 0; j < 10'000; ++j)
-			{
-				sum += buffer[j][i];
-			}
-		}
-
-		uint64 end = GetTickCount64();
-		cout << "Elapsed Tick" << (end - start) << endl;
-	}
+	GThreadManager->Join();
 }
