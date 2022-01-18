@@ -1,7 +1,2 @@
-﻿  pch.cpp
-  CoreGlobal.cpp
-  CorePch.cpp
-  CoreTLS.cpp
-  ThreadManager.cpp
-  코드를 생성하고 있습니다...
+﻿  Lock.cpp
   ServerCore.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Libraries\Debug\ServerCore.lib
