@@ -6,7 +6,11 @@
   DeadLockProfiler.cpp
   Lock.cpp
   Memory.cpp
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Memory.cpp(65,40): error C2440: '=': 'MemoryPool *'에서 'MemoryHeader *'(으)로 변환할 수 없습니다.
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Memory.cpp(65,38): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
+  MemoryPool.cpp
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\MemoryPool.cpp(51,15): error C2440: 'return': 'MemoryHeader *'에서 'MemoryPool *'(으)로 변환할 수 없습니다.
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\MemoryPool.cpp(51,9): message : 가리킨 형식이 관련이 없습니다. 변환하려면 reinterpret_cast, C 스타일 캐스트 또는 함수 스타일 캐스트가 필요합니다.
   RefCounting.cpp
   ThreadManager.cpp
   코드를 생성하고 있습니다...
-  ServerCore.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Libraries\Debug\ServerCore.lib
