@@ -1,6 +1,2 @@
-﻿  pch.cpp
-  ConcurrentQueue.cpp
-  ConcurrentStack.cpp
-  GameServer.cpp
-  코드를 생성하고 있습니다...
+﻿  GameServer.cpp
   GameServer.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Binary\Debug\GameServer.exe

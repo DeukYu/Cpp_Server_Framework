@@ -26,7 +26,7 @@ private:
 template <typename Type, typename... Args>
 Type* xnew(Args&&... args)
 {
-	Type* memory = static_cast<Type*>(xAlloc(sizeof(args)));
+	Type* memory = static_cast<Type*>(xAlloc(sizeof(Type)));
 	new(memory)Type();	// placement new
 	return memory;
 }
