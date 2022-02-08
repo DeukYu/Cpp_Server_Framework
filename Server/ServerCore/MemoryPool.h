@@ -25,7 +25,7 @@ public:
 	~MemoryPool();
 
 	void		Push(MemoryHeader* ptr);
-	MemoryPool* Pop();
+	MemoryHeader* Pop();
 private:
 	int32 _allocSize = 0;
 	atomic<int32>	_allocCount = 0;

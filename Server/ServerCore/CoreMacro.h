@@ -19,10 +19,9 @@
 #define	xAlloc(size)	PoolAllocator::Alloc(size)
 #define xRelease(ptr)	PoolAllocator::Release(ptr)
 #else
-#define	xalloc(size)	BaseAllocator::Alloc(size)
-#define xrelease(ptr)	BaseAllocator::Release(ptr)
+#define	xAlloc(size)	BaseAllocator::Alloc(size)
+#define xRelease(ptr)	BaseAllocator::Release(ptr)
 #endif // _DEBUG
-
 
 /*------------------------
 		CRASH

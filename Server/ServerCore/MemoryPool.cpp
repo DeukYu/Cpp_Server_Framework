@@ -24,7 +24,7 @@ void MemoryPool::Push(MemoryHeader* ptr)
 	_allocCount.fetch_sub(1);
 }
 
-MemoryPool* MemoryPool::Pop()
+MemoryHeader* MemoryPool::Pop()
 {
 	MemoryHeader* header = nullptr;
 
