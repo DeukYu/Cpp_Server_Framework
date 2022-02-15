@@ -82,7 +82,7 @@ int main()
 			break;
 		}
 
-		cout << "Recv Data Len" << recvLen << endl;
+		cout << "Recv Data Len = " << recvLen << endl;
 
 		this_thread::sleep_for(1s);
 	}

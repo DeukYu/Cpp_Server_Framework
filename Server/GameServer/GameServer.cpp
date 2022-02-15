@@ -93,7 +93,7 @@ int main()
 				break;
 			}
 
-			cout << "Recv Data Len" << recvLen << endl;
+			cout << "Recv Data Len = " << recvLen << endl;
 
 			// Send
 			while (true)
