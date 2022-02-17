@@ -162,6 +162,9 @@
     <ClInclude Include="CorePch.h" />
     <ClInclude Include="CoreTLS.h" />
     <ClInclude Include="DeadLockProfiler.h" />
+    <ClInclude Include="IocpCore.h" />
+    <ClInclude Include="IocpEvent.h" />
+    <ClInclude Include="Listener.h" />
     <ClInclude Include="Lock.h" />
     <ClInclude Include="Memory.h" />
     <ClInclude Include="MemoryPool.h" />
@@ -180,6 +183,9 @@
     <ClCompile Include="CorePch.cpp" />
     <ClCompile Include="CoreTLS.cpp" />
     <ClCompile Include="DeadLockProfiler.cpp" />
+    <ClCompile Include="IocpCore.cpp" />
+    <ClCompile Include="IocpEvent.cpp" />
+    <ClCompile Include="Listener.cpp" />
     <ClCompile Include="Lock.cpp" />
     <ClCompile Include="Memory.cpp" />
     <ClCompile Include="MemoryPool.cpp" />
