@@ -24,6 +24,6 @@ private:
 	void ProcessAccept(AcceptEvent* acceptEvent);
 protected:
 	SOCKET _socket = INVALID_SOCKET;
-	Vector<AcceptEvent*> _AcceptEvents;
+	Vector<AcceptEvent*> _acceptEvents;
 };
 
