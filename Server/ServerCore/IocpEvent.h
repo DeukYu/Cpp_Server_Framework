@@ -15,10 +15,12 @@ class IocpEvent : public OVERLAPPED
 public:
 	IocpEvent(EventType type);
 
-	void		Init();
-	EventType	GetType() { return _type; }
-protected:
-	EventType _type;
+	void			Init();
+	EventType		GetType() { return eventType; }
+
+public:
+	EventType		eventType;
+	IocpObjectRef	owner;
 };
 
 class ConnectEvent : public IocpEvent
@@ -32,10 +34,8 @@ class AcceptEvent : public IocpEvent
 public:
 	AcceptEvent() :IocpEvent(EventType::Accept) {}
 
-	void SetSession(Session* session) { _session = session; }
-	Session* GetSession() { return _session; }
-private:
-	Session* _session = nullptr;
+public:
+	SessionRef session = nullptr;
 };
 class RecvEvent : public IocpEvent
 {

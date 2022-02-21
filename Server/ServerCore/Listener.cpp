@@ -35,6 +35,7 @@ bool Listener::StartAccept(NetAddress netAddr)
 	for (int32 i = 0; i < acceptCount; ++i)
 	{
 		AcceptEvent* acceptEvent = xnew<AcceptEvent>();
+		acceptEvent->owner = shared_from_this();
 		_acceptEvents.push_back(acceptEvent);
 		RegisterAccept(acceptEvent);
 	}
@@ -54,7 +55,7 @@ HANDLE Listener::GetHandle()
 
 void Listener::Dispatch(IocpEvent* iocpEvent, int32 numOfBytes)
 {
-	ASSERT_CRASH(iocpEvent->GetType() == EventType::Accept);
+	ASSERT_CRASH(iocpEvent->eventType == EventType::Accept);
 
 	AcceptEvent* acceptEvent = static_cast<AcceptEvent*>(iocpEvent);
 	ProcessAccept(acceptEvent);
@@ -62,10 +63,10 @@ void Listener::Dispatch(IocpEvent* iocpEvent, int32 numOfBytes)
 
 void Listener::RegisterAccept(AcceptEvent* acceptEvent)
 {
-	Session* session = xnew<Session>();
+	SessionRef session = MakeShared<Session>();
 
 	acceptEvent->Init();
-	acceptEvent->SetSession(session);
+	acceptEvent->session = session;
 
 	DWORD	bytesReceived = 0;
 	if (false == SocketUtils::AcceptEx(_socket, session->GetSocket(), session->_recvBuffer, 0,
@@ -83,7 +84,7 @@ void Listener::RegisterAccept(AcceptEvent* acceptEvent)
 
 void Listener::ProcessAccept(AcceptEvent* acceptEvent)
 {
-	Session* session = acceptEvent->GetSession();
+	SessionRef session = acceptEvent->session;
 
 	if (false == SocketUtils::SetUpdateAcceptSocket(session->GetSocket(), _socket))
 	{

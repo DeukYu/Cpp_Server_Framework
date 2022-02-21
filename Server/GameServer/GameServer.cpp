@@ -12,7 +12,7 @@
 
 int main()
 {
-	Listener	listener;
+	Listener	listener = MakeShared<Listener>();
 	listener.StartAccept(NetAddress(L"127.0.0.1", 7777));
 
 	for (int32 i = 0; i < 5; ++i)

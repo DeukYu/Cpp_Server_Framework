@@ -1,4 +1,6 @@
-﻿  IocpEvent.cpp
+﻿  IocpCore.cpp
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\IocpCore.cpp(20,9): warning C4101: 'socket' :참조되지 않은 지역 변수입니다.
   Listener.cpp
+  Session.cpp
   코드를 생성하고 있습니다...
   ServerCore.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Libraries\Debug\ServerCore.lib
