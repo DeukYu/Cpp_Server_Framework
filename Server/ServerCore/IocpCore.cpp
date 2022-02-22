@@ -2,8 +2,6 @@
 #include "IocpCore.h"
 #include "IocpEvent.h"
 
-IocpCore GIocpCore;
-
 IocpCore::IocpCore()
 {
 	_iocpHandle = ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 0);
@@ -15,9 +13,8 @@ IocpCore::~IocpCore()
 	::CloseHandle(_iocpHandle);
 }
 
-bool IocpCore::Register(class IocpObject* iocpObject)
+bool IocpCore::Register(IocpObjectRef iocpObject)
 {
-	SOCKET	socket;
 	::CreateIoCompletionPort(iocpObject->GetHandle(), _iocpHandle, 0, 0);
 	return false;
 }
