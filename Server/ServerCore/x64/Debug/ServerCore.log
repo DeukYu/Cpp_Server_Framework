@@ -1,2 +1,13 @@
 ﻿  Listener.cpp
-  ServerCore.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Libraries\Debug\ServerCore.lib
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Session.h(45,49): error C2562: 'Session::OnRecv': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Session.h(45): message : 'Session::OnRecv' 선언을 참조하십시오.
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Listener.cpp(109,26): error C2248: 'Session::ProcessConnect': private 멤버('Session' 클래스에서 선언)에 액세스할 수 없습니다.
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Session.h(37): message : 'Session::ProcessConnect' 선언을 참조하십시오.
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Session.h(8): message : 'Session' 선언을 참조하십시오.
+  Service.cpp
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Session.h(45,49): error C2562: 'Session::OnRecv': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Session.h(45): message : 'Session::OnRecv' 선언을 참조하십시오.
+  Session.cpp
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Session.h(45,49): error C2562: 'Session::OnRecv': 'void' 함수에서 값을 반환하고 있습니다.
+C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\ServerCore\Session.h(45): message : 'Session::OnRecv' 선언을 참조하십시오.
+  코드를 생성하고 있습니다...
