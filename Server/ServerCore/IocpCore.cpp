@@ -15,8 +15,7 @@ IocpCore::~IocpCore()
 
 bool IocpCore::Register(IocpObjectRef iocpObject)
 {
-	::CreateIoCompletionPort(iocpObject->GetHandle(), _iocpHandle, 0, 0);
-	return false;
+	return ::CreateIoCompletionPort(iocpObject->GetHandle(), _iocpHandle, 0, 0);
 }
 
 bool IocpCore::Dispatch(uint32 timeoutMs)

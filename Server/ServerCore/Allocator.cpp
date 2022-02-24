@@ -22,14 +22,13 @@ void* StompAllocator::Alloc(int32 size)
 
 	void* baseAddress = ::VirtualAlloc(NULL, pageCount * PAGE_SIZE, MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 	return static_cast<void*>(static_cast<int8*>(baseAddress) + dataOffset);
-	return nullptr;
 }
 
 void StompAllocator::Release(void* ptr)
 {
 	const int64 address = reinterpret_cast<int64>(ptr);
 	const int64 baseAddress = address - (address % PAGE_SIZE);
-	::VirtualFree(ptr, 0, MEM_RELEASE);
+	::VirtualFree(reinterpret_cast<void*>(baseAddress), 0, MEM_RELEASE);
 }
 
 /*-------------------
@@ -37,9 +36,10 @@ void StompAllocator::Release(void* ptr)
 -------------------*/
 void* PoolAllocator::Alloc(int32 size)
 {
-	return nullptr;
+	return GMemory->Allocate(size);
 }
 
 void PoolAllocator::Release(void* ptr)
 {
+	GMemory->Release(ptr);
 }
