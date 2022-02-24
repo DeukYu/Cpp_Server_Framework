@@ -7,6 +7,9 @@ class ServerService;
 
 class Listener : public IocpObject
 {
+	friend class Listener;
+	friend class IocpCore;
+	friend class Service;
 public:
 	Listener() = default;
 	~Listener();

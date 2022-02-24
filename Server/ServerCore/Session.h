@@ -7,6 +7,10 @@ class Service;
 
 class Session : public IocpObject
 {
+	friend class Listener;
+	friend class IocpCore;
+	friend class Service;
+
 public:
 	Session();
 	virtual ~Session();
@@ -42,7 +46,7 @@ private:	/* 전송 관련 */
 
 protected:	/* 컨텐츠 코드에서 오버로딩 */
 	virtual	void	OnConnected() {}
-	virtual	void	OnRecv(BYTE* buffer, int32 len) { return len; }
+	virtual	int32	OnRecv(BYTE* buffer, int32 len) { return len; }
 	virtual void	OnSend(int len) {}
 	virtual	void	OnDisconnected() {}
 

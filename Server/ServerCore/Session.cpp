@@ -15,6 +15,14 @@ Session::~Session()
 
 void Session::Disconnect(const WCHAR* cause)
 {
+	if (_connected.exchange(false) == false)
+		return;
+
+	wcout << "Disconnect : " << cause << endl;
+
+	OnDisconnected();	// 컨텐츠 코드에서 오버로딩
+	SocketUtils::Close(_socket);
+	GetService()->ReleaseSession(GetSessionRef());
 }
 
 HANDLE Session::GetHandle()
@@ -24,7 +32,20 @@ HANDLE Session::GetHandle()
 
 void Session::Dispatch(IocpEvent* iocpEvent, int32 numOfBytes)
 {
-	// TODO
+	switch (iocpEvent->eventType)
+	{
+	case EventType::Connect:
+		ProcessConnect();
+		break;
+	case EventType::Recv:
+		ProcessRecv(numOfBytes);
+		break;
+	case EventType::Send:
+		ProcessSend(numOfBytes);
+		break;
+	default:
+		break;
+	}
 }
 
 void Session::RegisterConnect()
@@ -75,6 +96,18 @@ void Session::ProcessConnect()
 
 void Session::ProcessRecv(int32 numOfBytes)
 {
+	_recvEvent.owner = nullptr;
+
+	if (numOfBytes == 0)
+	{
+		Disconnect(L"Recv 0");
+		return;
+	}
+
+	cout << "Recv Data Len = " << numOfBytes << endl;
+
+	// 수신 등록
+	RegisterRecv();
 }
 
 void Session::ProcessSend(int32 numOfBytes)
