@@ -17,6 +17,7 @@ public:
 
 public:	/* 외부에서 사용 */
 	void	Send(BYTE* buffer, int32 len);
+	bool	Connect();
 	void	Disconnect(const WCHAR* cause);
 
 	shared_ptr<Service>	GetService() { return _service.lock(); }
@@ -35,7 +36,7 @@ private: /* 인터페이스 구현 */
 	virtual void Dispatch(class IocpEvent* iocpEvent, int32 numOfBytes = 0) override;
 
 private:	/* 전송 관련 */
-	void	RegisterConnect();
+	bool	RegisterConnect();
 	void	RegisterRecv();
 	void	RegisterSend(SendEvent* sendEvent);
 
@@ -67,7 +68,8 @@ private:
 	/*송신 관련*/
 
 private:	/* iocpEvent 재사용 */
-	RecvEvent	_recvEvent;
+	ConnectEvent	_connectEvent;
+	RecvEvent		_recvEvent;
 
 };
 
