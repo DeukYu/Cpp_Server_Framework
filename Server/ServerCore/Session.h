@@ -37,10 +37,12 @@ private: /* 인터페이스 구현 */
 
 private:	/* 전송 관련 */
 	bool	RegisterConnect();
+	bool	RegisterDisconnect();
 	void	RegisterRecv();
 	void	RegisterSend(SendEvent* sendEvent);
 
 	void	ProcessConnect();
+	void	ProcessDisconnect();
 	void	ProcessRecv(int32 numOfBytes);
 	void	ProcessSend(SendEvent* sendEvent, int32 numOfBytes);
 
@@ -69,6 +71,7 @@ private:
 
 private:	/* iocpEvent 재사용 */
 	ConnectEvent	_connectEvent;
+	DisconnectEvent	_disconnectEvent;
 	RecvEvent		_recvEvent;
 
 };

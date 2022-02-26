@@ -37,8 +37,9 @@ void Session::Disconnect(const WCHAR* cause)
 	wcout << "Disconnect : " << cause << endl;
 
 	OnDisconnected();	// 컨텐츠 코드에서 오버로딩
-	SocketUtils::Close(_socket);
 	GetService()->ReleaseSession(GetSessionRef());
+
+	RegisterDisconnect();
 }
 
 HANDLE Session::GetHandle()
@@ -52,6 +53,8 @@ void Session::Dispatch(IocpEvent* iocpEvent, int32 numOfBytes)
 	{
 	case EventType::Connect:
 		ProcessConnect();
+	case EventType::Disconnect:
+		ProcessDisconnect();
 		break;
 	case EventType::Recv:
 		ProcessRecv(numOfBytes);
@@ -90,6 +93,23 @@ bool Session::RegisterConnect()
 		if (errorCode != WSA_IO_PENDING)
 		{
 			_connectEvent.owner = nullptr;
+			return false;
+		}
+	}
+	return true;
+}
+
+bool Session::RegisterDisconnect()
+{
+	_disconnectEvent.Init();
+	_disconnectEvent.owner = shared_from_this();
+
+	if (false == SocketUtils::DisconnectEx(_socket, &_disconnectEvent, TF_REUSE_SOCKET, 0))
+	{
+		int32	errorCode = ::WSAGetLastError();
+		if (errorCode != WSA_IO_PENDING)
+		{
+			_disconnectEvent.owner = nullptr;
 			return false;
 		}
 	}
@@ -156,6 +176,11 @@ void Session::ProcessConnect()
 
 	// 수신 등록
 	RegisterRecv();
+}
+
+void Session::ProcessDisconnect()
+{
+	_disconnectEvent.owner = nullptr;
 }
 
 void Session::ProcessRecv(int32 numOfBytes)
