@@ -1,20 +1,2 @@
-﻿  pch.cpp
-  Allocator.cpp
-  CoreGlobal.cpp
-  CorePch.cpp
-  CoreTLS.cpp
-  DeadLockProfiler.cpp
-  IocpCore.cpp
-  IocpEvent.cpp
-  Listener.cpp
-  Lock.cpp
-  Memory.cpp
-  MemoryPool.cpp
-  NetAddress.cpp
-  RefCounting.cpp
-  Service.cpp
-  Session.cpp
-  SocketUtils.cpp
-  ThreadManager.cpp
-  코드를 생성하고 있습니다...
+﻿  RecvBuffer.cpp
   ServerCore.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Libraries\Debug\ServerCore.lib

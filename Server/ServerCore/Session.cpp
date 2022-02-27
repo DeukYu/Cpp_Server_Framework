@@ -3,7 +3,7 @@
 #include "SocketUtils.h"
 #include "Service.h"
 
-Session::Session()
+Session::Session() : _recvBuffer(BUFFER_SIZE)
 {
 	_socket = SocketUtils::CreateSocket();
 }
@@ -53,6 +53,7 @@ void Session::Dispatch(IocpEvent* iocpEvent, int32 numOfBytes)
 	{
 	case EventType::Connect:
 		ProcessConnect();
+		break;
 	case EventType::Disconnect:
 		ProcessDisconnect();
 		break;
@@ -121,15 +122,16 @@ void Session::RegisterRecv()
 	if (IsConnected() == false)
 		return;
 
+	_recvEvent.Init();
 	_recvEvent.owner = shared_from_this();
 
 	_WSABUF	wsaBuf;
-	wsaBuf.buf = reinterpret_cast<char*>(_recvBuffer);
-	wsaBuf.len = len32(_recvBuffer);
+	wsaBuf.buf = reinterpret_cast<char*>(_recvBuffer.WritePos());
+	wsaBuf.len = _recvBuffer.FreeSize();
 
 	DWORD	numOfBytes = 0;
 	DWORD	flags = 0;
-	if (SOCKET_ERROR == ::WSARecv(_socket, &wsaBuf, 1, OUT & numOfBytes, OUT & flags, &_recvEvent, nullptr))
+	if (SOCKET_ERROR == ::WSARecv(_socket, &wsaBuf, 1, OUT &numOfBytes, OUT & flags, &_recvEvent, nullptr))
 	{
 		int32 errorCode = ::WSAGetLastError();
 		if (errorCode != WSA_IO_PENDING)
@@ -193,8 +195,22 @@ void Session::ProcessRecv(int32 numOfBytes)
 		return;
 	}
 
-	// 콘텐츠 코드에서 오버로딩
-	OnRecv(_recvBuffer, numOfBytes);
+	if (_recvBuffer.OnWrite(numOfBytes) == false)
+	{
+		Disconnect(L"OnWrite Overflow");
+		return;
+	}
+
+	int32 dataSize = _recvBuffer.DataSize();
+	int32 processLen = OnRecv(_recvBuffer.ReadPos(), numOfBytes);
+	if (processLen < 0 || dataSize < processLen || _recvBuffer.OnRead(processLen) == false)
+	{
+		Disconnect(L"OnRead Overflow");
+		return;
+	}
+
+	// 커서 정리
+	
 
 	// 수신 등록
 	RegisterRecv();
