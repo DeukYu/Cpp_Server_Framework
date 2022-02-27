@@ -22,7 +22,8 @@ public:
 	virtual ~Session();
 
 public:	/* 외부에서 사용 */
-	void	Send(BYTE* buffer, int32 len);
+	//void	Send(BYTE* buffer, int32 len);
+	void	Send(SendBufferRef sendBuffer);
 	bool	Connect();
 	void	Disconnect(const WCHAR* cause);
 
@@ -45,12 +46,12 @@ private:	/* 전송 관련 */
 	bool	RegisterConnect();
 	bool	RegisterDisconnect();
 	void	RegisterRecv();
-	void	RegisterSend(SendEvent* sendEvent);
+	void	RegisterSend();
 
 	void	ProcessConnect();
 	void	ProcessDisconnect();
 	void	ProcessRecv(int32 numOfBytes);
-	void	ProcessSend(SendEvent* sendEvent, int32 numOfBytes);
+	void	ProcessSend(int32 numOfBytes);
 
 	void	HandleError(int32 errorCode);
 
@@ -73,11 +74,14 @@ private:
 	RecvBuffer	_recvBuffer;
 
 	/*송신 관련*/
+	queue<SendBufferRef>	_sendQueue;
+	Atomic<bool>			_sendRegistered = false;
 
 private:	/* iocpEvent 재사용 */
 	ConnectEvent	_connectEvent;
 	DisconnectEvent	_disconnectEvent;
 	RecvEvent		_recvEvent;
+	SendEvent		_sendEvent;
 
 };
 

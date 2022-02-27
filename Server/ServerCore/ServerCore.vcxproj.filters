@@ -39,7 +39,6 @@
     <ClInclude Include="ThreadManager.h">
       <Filter>Thread</Filter>
     </ClInclude>
-    <ClInclude Include="Lock.h" />
     <ClInclude Include="DeadLockProfiler.h">
       <Filter>Thread</Filter>
     </ClInclude>
@@ -88,6 +87,12 @@
     <ClInclude Include="RecvBuffer.h">
       <Filter>Network</Filter>
     </ClInclude>
+    <ClInclude Include="SendBuffer.h">
+      <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="Lock.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CorePch.cpp">
@@ -105,7 +110,6 @@
     <ClCompile Include="ThreadManager.cpp">
       <Filter>Thread</Filter>
     </ClCompile>
-    <ClCompile Include="Lock.cpp" />
     <ClCompile Include="DeadLockProfiler.cpp">
       <Filter>Thread</Filter>
     </ClCompile>
@@ -144,6 +148,12 @@
     </ClCompile>
     <ClCompile Include="RecvBuffer.cpp">
       <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="SendBuffer.cpp">
+      <Filter>Network</Filter>
+    </ClCompile>
+    <ClCompile Include="Lock.cpp">
+      <Filter>Thread</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
