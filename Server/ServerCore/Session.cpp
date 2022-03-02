@@ -57,9 +57,6 @@ void Session::Disconnect(const WCHAR* cause)
 
 	wcout << "Disconnect : " << cause << endl;
 
-	OnDisconnected();	// 컨텐츠 코드에서 오버로딩
-	GetService()->ReleaseSession(GetSessionRef());
-
 	RegisterDisconnect();
 }
 
@@ -233,6 +230,9 @@ void Session::ProcessConnect()
 void Session::ProcessDisconnect()
 {
 	_disconnectEvent.owner = nullptr;
+
+	OnDisconnected();	// 컨텐츠 코드에서 오버로딩
+	GetService()->ReleaseSession(GetSessionRef());
 }
 
 void Session::ProcessRecv(int32 numOfBytes)

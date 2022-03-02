@@ -1,5 +1,2 @@
-﻿  Listener.cpp
-  Service.cpp
-  Session.cpp
-  코드를 생성하고 있습니다...
+﻿  SendBuffer.cpp
   ServerCore.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Libraries\Debug\ServerCore.lib

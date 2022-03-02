@@ -1,6 +1,6 @@
 #pragma once
 #include "Session.h"
-class GameSession : public Session
+class GameSession : public PacketSession
 {
 public:
 	~GameSession()
