@@ -26,5 +26,18 @@ int main()
 		});
 	}
 
+	while (true)
+	{
+		SendBufferRef sendBuffer = GSendBufferManager->Open(4096);
+
+		BYTE* buffer = sendBuffer->Buffer();
+
+		/*((PacketHeader*)buffer)->size = (sizeof)
+		::memcpy(sendBuffer->Buffer(), buffer, len);
+		sendBuffer->Close(len);
+
+		GSessionManager.Broadcast(sendBuffer);*/
+	}
+
 	GThreadManager->Join();
 }

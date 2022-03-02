@@ -1,21 +1,22 @@
 #include "pch.h"
 #include "SendBuffer.h"
 
-SendBuffer::SendBuffer(int32 buffserSize)
+SendBuffer::SendBuffer(SendBufferChunkRef owner, BYTE* buffer, int32 allocSize)
+	: _owner(owner), _buffer(buffer), _allocSize(allocSize)
 {
-	_buffer.resize(buffserSize);
 }
 
 SendBuffer::~SendBuffer()
 {
 }
 
-void SendBuffer::CopyData(void* data, int32 len)
+void SendBuffer::Close(uint32 writeSize)
 {
-	ASSERT_CRASH(Capacity() >= len);
-	::memcpy(_buffer.data(), data, len);
-	_writeSize = len;
+	ASSERT_CRASH(_allocSize >= writeSize);
+	_writeSize = writeSize;
+	_owner->Close(writeSize);
 }
+
 
 SendBufferChunk::SendBufferChunk()
 {
@@ -45,13 +46,19 @@ SendBufferRef SendBufferChunk::Open(uint32 allocSize)
 
 void SendBufferChunk::Close(uint32 writeSize)
 {
+	ASSERT_CRASH(_open == true);
+	_open = false;
+	_usedSize += writeSize;
 }
 
 
-SendBufferChunkRef SendBufferManager::Open(uint32 size)
+SendBufferRef SendBufferManager::Open(uint32 size)
 {
 	if (LSendBufferChunk == nullptr)
+	{
 		LSendBufferChunk = Pop(); // WRITE_LOCK
+		LSendBufferChunk->Reset();
+	}
 
 	ASSERT_CRASH(LSendBufferChunk->IsOpen() == false);
 
@@ -62,17 +69,19 @@ SendBufferChunkRef SendBufferManager::Open(uint32 size)
 		LSendBufferChunk->Reset();
 	}
 
+	cout << "FREE : " << LSendBufferChunk->FreeSize() << endl;
+
 	return LSendBufferChunk->Open(size);
 }
 
 SendBufferChunkRef SendBufferManager::Pop()
 {
 	WRITE_LOCK;
-	if(_sendBufferChunks.emplace() == false)
+	if(_sendBufferChunks.empty() == false)
 	{
 		SendBufferChunkRef sendBufferChunk = _sendBufferChunks.back();
 		_sendBufferChunks.pop_back();
-
+		return sendBufferChunk;
 	}
 	return SendBufferChunkRef(xnew<SendBufferChunk>(), PushGlobal);
 }
