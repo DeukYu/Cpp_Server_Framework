@@ -12,7 +12,7 @@ public:
 	uint32 FreeSize() { return _size - _pos; }
 
 	template<typename T>
-	bool Peek(T* dest) { return Peek(dest); }
+	bool Peek(T* dest) { return Peek(dest, sizeof(T)); }
 	bool Peek(void* dest, uint32 len);
 
 	template<typename T>
