@@ -7,8 +7,25 @@
 #include "BufferWriter.h"
 #include "ServerPacketHandler.h"
 
+#pragma pack(1)
+struct PKT_S_TEST
+{
+	uint64 id;
+	uint32 hp;
+	uint16 attack;
+
+	//vector<BuffData>	buffs;
+	//wstring name;
+};
+#pragma pack()
+
 int main()
 {
+	PKT_S_TEST pkt;
+	pkt.hp = 1;
+	pkt.id = 2;
+	pkt.attack = 3;
+
 	ServerServiceRef service = MakeShared<ServerService>(
 		NetAddress(L"127.0.0.1", 7777),
 		MakeShared<IocpCore>(),
@@ -33,7 +50,7 @@ int main()
 	while (true)
 	{ 
 		vector<BuffData>	buffs{ BuffData{100, 1.5f}, BuffData{200, 2.3f}, BuffData{300, 0.7f} };
-		SendBufferRef sendBuffer = ServerPacketHandler::Make_S_TEST(1001, 100, 10, buffs);
+		SendBufferRef sendBuffer = ServerPacketHandler::Make_S_TEST(1001, 100, 10, buffs, L"안녕하세요");
 		GSessionManager.Broadcast(sendBuffer);
 
 		this_thread::sleep_for(250ms);
