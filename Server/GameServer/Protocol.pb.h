@@ -31,7 +31,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 #include "Enum.pb.h"
 #include "Struct.pb.h"
@@ -50,7 +49,7 @@ struct TableStruct_Protocol_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -58,6 +57,12 @@ struct TableStruct_Protocol_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Protocol_2eproto;
 namespace Protocol {
+class C_MOVE;
+struct C_MOVEDefaultTypeInternal;
+extern C_MOVEDefaultTypeInternal _C_MOVE_default_instance_;
+class C_TEST;
+struct C_TESTDefaultTypeInternal;
+extern C_TESTDefaultTypeInternal _C_TEST_default_instance_;
 class S_LOGIN;
 struct S_LOGINDefaultTypeInternal;
 extern S_LOGINDefaultTypeInternal _S_LOGIN_default_instance_;
@@ -66,62 +71,317 @@ struct S_TESTDefaultTypeInternal;
 extern S_TESTDefaultTypeInternal _S_TEST_default_instance_;
 }  // namespace Protocol
 PROTOBUF_NAMESPACE_OPEN
+template<> ::Protocol::C_MOVE* Arena::CreateMaybeMessage<::Protocol::C_MOVE>(Arena*);
+template<> ::Protocol::C_TEST* Arena::CreateMaybeMessage<::Protocol::C_TEST>(Arena*);
 template<> ::Protocol::S_LOGIN* Arena::CreateMaybeMessage<::Protocol::S_LOGIN>(Arena*);
 template<> ::Protocol::S_TEST* Arena::CreateMaybeMessage<::Protocol::S_TEST>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace Protocol {
 
-enum S_TEST_PacketId : int {
-  S_TEST_PacketId_NONE = 0,
-  S_TEST_PacketId_PACKET_ID = 1,
-  S_TEST_PacketId_S_TEST_PacketId_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  S_TEST_PacketId_S_TEST_PacketId_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
-};
-bool S_TEST_PacketId_IsValid(int value);
-constexpr S_TEST_PacketId S_TEST_PacketId_PacketId_MIN = S_TEST_PacketId_NONE;
-constexpr S_TEST_PacketId S_TEST_PacketId_PacketId_MAX = S_TEST_PacketId_PACKET_ID;
-constexpr int S_TEST_PacketId_PacketId_ARRAYSIZE = S_TEST_PacketId_PacketId_MAX + 1;
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* S_TEST_PacketId_descriptor();
-template<typename T>
-inline const std::string& S_TEST_PacketId_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, S_TEST_PacketId>::value ||
-    ::std::is_integral<T>::value,
-    "Incorrect type passed to function S_TEST_PacketId_Name.");
-  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    S_TEST_PacketId_descriptor(), enum_t_value);
-}
-inline bool S_TEST_PacketId_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, S_TEST_PacketId* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<S_TEST_PacketId>(
-    S_TEST_PacketId_descriptor(), name, value);
-}
-enum S_LOGIN_PacketId : int {
-  S_LOGIN_PacketId_NONE = 0,
-  S_LOGIN_PacketId_PACKET_ID = 2,
-  S_LOGIN_PacketId_S_LOGIN_PacketId_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  S_LOGIN_PacketId_S_LOGIN_PacketId_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
-};
-bool S_LOGIN_PacketId_IsValid(int value);
-constexpr S_LOGIN_PacketId S_LOGIN_PacketId_PacketId_MIN = S_LOGIN_PacketId_NONE;
-constexpr S_LOGIN_PacketId S_LOGIN_PacketId_PacketId_MAX = S_LOGIN_PacketId_PACKET_ID;
-constexpr int S_LOGIN_PacketId_PacketId_ARRAYSIZE = S_LOGIN_PacketId_PacketId_MAX + 1;
-
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* S_LOGIN_PacketId_descriptor();
-template<typename T>
-inline const std::string& S_LOGIN_PacketId_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, S_LOGIN_PacketId>::value ||
-    ::std::is_integral<T>::value,
-    "Incorrect type passed to function S_LOGIN_PacketId_Name.");
-  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    S_LOGIN_PacketId_descriptor(), enum_t_value);
-}
-inline bool S_LOGIN_PacketId_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, S_LOGIN_PacketId* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<S_LOGIN_PacketId>(
-    S_LOGIN_PacketId_descriptor(), name, value);
-}
 // ===================================================================
+
+class C_TEST final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_TEST) */ {
+ public:
+  inline C_TEST() : C_TEST(nullptr) {}
+  ~C_TEST() override;
+  explicit constexpr C_TEST(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_TEST(const C_TEST& from);
+  C_TEST(C_TEST&& from) noexcept
+    : C_TEST() {
+    *this = ::std::move(from);
+  }
+
+  inline C_TEST& operator=(const C_TEST& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_TEST& operator=(C_TEST&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_TEST& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_TEST* internal_default_instance() {
+    return reinterpret_cast<const C_TEST*>(
+               &_C_TEST_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(C_TEST& a, C_TEST& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_TEST* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_TEST* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_TEST* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_TEST>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_TEST& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_TEST& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_TEST* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Protocol.C_TEST";
+  }
+  protected:
+  explicit C_TEST(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIdFieldNumber = 1,
+  };
+  // uint64 id = 1;
+  void clear_id();
+  uint64_t id() const;
+  void set_id(uint64_t value);
+  private:
+  uint64_t _internal_id() const;
+  void _internal_set_id(uint64_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Protocol.C_TEST)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t id_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Protocol_2eproto;
+};
+// -------------------------------------------------------------------
+
+class C_MOVE final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.C_MOVE) */ {
+ public:
+  inline C_MOVE() : C_MOVE(nullptr) {}
+  ~C_MOVE() override;
+  explicit constexpr C_MOVE(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  C_MOVE(const C_MOVE& from);
+  C_MOVE(C_MOVE&& from) noexcept
+    : C_MOVE() {
+    *this = ::std::move(from);
+  }
+
+  inline C_MOVE& operator=(const C_MOVE& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline C_MOVE& operator=(C_MOVE&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const C_MOVE& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const C_MOVE* internal_default_instance() {
+    return reinterpret_cast<const C_MOVE*>(
+               &_C_MOVE_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(C_MOVE& a, C_MOVE& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(C_MOVE* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(C_MOVE* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  C_MOVE* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<C_MOVE>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const C_MOVE& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const C_MOVE& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(C_MOVE* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Protocol.C_MOVE";
+  }
+  protected:
+  explicit C_MOVE(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kIdFieldNumber = 1,
+    kPosFieldNumber = 2,
+  };
+  // uint64 id = 1;
+  void clear_id();
+  uint64_t id() const;
+  void set_id(uint64_t value);
+  private:
+  uint64_t _internal_id() const;
+  void _internal_set_id(uint64_t value);
+  public:
+
+  // uint32 pos = 2;
+  void clear_pos();
+  uint32_t pos() const;
+  void set_pos(uint32_t value);
+  private:
+  uint32_t _internal_pos() const;
+  void _internal_set_pos(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Protocol.C_MOVE)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  uint64_t id_;
+  uint32_t pos_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Protocol_2eproto;
+};
+// -------------------------------------------------------------------
 
 class S_TEST final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.S_TEST) */ {
@@ -171,7 +431,7 @@ class S_TEST final :
                &_S_TEST_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    2;
 
   friend void swap(S_TEST& a, S_TEST& b) {
     a.Swap(&b);
@@ -241,36 +501,6 @@ class S_TEST final :
   ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
   // nested types ----------------------------------------------------
-
-  typedef S_TEST_PacketId PacketId;
-  static constexpr PacketId NONE =
-    S_TEST_PacketId_NONE;
-  static constexpr PacketId PACKET_ID =
-    S_TEST_PacketId_PACKET_ID;
-  static inline bool PacketId_IsValid(int value) {
-    return S_TEST_PacketId_IsValid(value);
-  }
-  static constexpr PacketId PacketId_MIN =
-    S_TEST_PacketId_PacketId_MIN;
-  static constexpr PacketId PacketId_MAX =
-    S_TEST_PacketId_PacketId_MAX;
-  static constexpr int PacketId_ARRAYSIZE =
-    S_TEST_PacketId_PacketId_ARRAYSIZE;
-  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  PacketId_descriptor() {
-    return S_TEST_PacketId_descriptor();
-  }
-  template<typename T>
-  static inline const std::string& PacketId_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, PacketId>::value ||
-      ::std::is_integral<T>::value,
-      "Incorrect type passed to function PacketId_Name.");
-    return S_TEST_PacketId_Name(enum_t_value);
-  }
-  static inline bool PacketId_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
-      PacketId* value) {
-    return S_TEST_PacketId_Parse(name, value);
-  }
 
   // accessors -------------------------------------------------------
 
@@ -388,7 +618,7 @@ class S_LOGIN final :
                &_S_LOGIN_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    3;
 
   friend void swap(S_LOGIN& a, S_LOGIN& b) {
     a.Swap(&b);
@@ -445,36 +675,6 @@ class S_LOGIN final :
 
   // nested types ----------------------------------------------------
 
-  typedef S_LOGIN_PacketId PacketId;
-  static constexpr PacketId NONE =
-    S_LOGIN_PacketId_NONE;
-  static constexpr PacketId PACKET_ID =
-    S_LOGIN_PacketId_PACKET_ID;
-  static inline bool PacketId_IsValid(int value) {
-    return S_LOGIN_PacketId_IsValid(value);
-  }
-  static constexpr PacketId PacketId_MIN =
-    S_LOGIN_PacketId_PacketId_MIN;
-  static constexpr PacketId PacketId_MAX =
-    S_LOGIN_PacketId_PacketId_MAX;
-  static constexpr int PacketId_ARRAYSIZE =
-    S_LOGIN_PacketId_PacketId_ARRAYSIZE;
-  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  PacketId_descriptor() {
-    return S_LOGIN_PacketId_descriptor();
-  }
-  template<typename T>
-  static inline const std::string& PacketId_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, PacketId>::value ||
-      ::std::is_integral<T>::value,
-      "Incorrect type passed to function PacketId_Name.");
-    return S_LOGIN_PacketId_Name(enum_t_value);
-  }
-  static inline bool PacketId_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
-      PacketId* value) {
-    return S_LOGIN_PacketId_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   // @@protoc_insertion_point(class_scope:Protocol.S_LOGIN)
@@ -496,6 +696,74 @@ class S_LOGIN final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
+// C_TEST
+
+// uint64 id = 1;
+inline void C_TEST::clear_id() {
+  id_ = uint64_t{0u};
+}
+inline uint64_t C_TEST::_internal_id() const {
+  return id_;
+}
+inline uint64_t C_TEST::id() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_TEST.id)
+  return _internal_id();
+}
+inline void C_TEST::_internal_set_id(uint64_t value) {
+  
+  id_ = value;
+}
+inline void C_TEST::set_id(uint64_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_TEST.id)
+}
+
+// -------------------------------------------------------------------
+
+// C_MOVE
+
+// uint64 id = 1;
+inline void C_MOVE::clear_id() {
+  id_ = uint64_t{0u};
+}
+inline uint64_t C_MOVE::_internal_id() const {
+  return id_;
+}
+inline uint64_t C_MOVE::id() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MOVE.id)
+  return _internal_id();
+}
+inline void C_MOVE::_internal_set_id(uint64_t value) {
+  
+  id_ = value;
+}
+inline void C_MOVE::set_id(uint64_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MOVE.id)
+}
+
+// uint32 pos = 2;
+inline void C_MOVE::clear_pos() {
+  pos_ = 0u;
+}
+inline uint32_t C_MOVE::_internal_pos() const {
+  return pos_;
+}
+inline uint32_t C_MOVE::pos() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MOVE.pos)
+  return _internal_pos();
+}
+inline void C_MOVE::_internal_set_pos(uint32_t value) {
+  
+  pos_ = value;
+}
+inline void C_MOVE::set_pos(uint32_t value) {
+  _internal_set_pos(value);
+  // @@protoc_insertion_point(field_set:Protocol.C_MOVE.pos)
+}
+
+// -------------------------------------------------------------------
+
 // S_TEST
 
 // uint64 id = 1;
@@ -604,25 +872,14 @@ S_TEST::buffs() const {
 #endif  // __GNUC__
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace Protocol
-
-PROTOBUF_NAMESPACE_OPEN
-
-template <> struct is_proto_enum< ::Protocol::S_TEST_PacketId> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::Protocol::S_TEST_PacketId>() {
-  return ::Protocol::S_TEST_PacketId_descriptor();
-}
-template <> struct is_proto_enum< ::Protocol::S_LOGIN_PacketId> : ::std::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::Protocol::S_LOGIN_PacketId>() {
-  return ::Protocol::S_LOGIN_PacketId_descriptor();
-}
-
-PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 
