@@ -1,4 +1,31 @@
-﻿  ClientPacketHandler.cpp
-  DummyClient.cpp
+﻿Struct.proto(4,1): warning G7CF62709: Import Enum.proto is unused.
+  C:Enum.pb.h
+  1개 파일이 복사되었습니다.
+  C:Enum.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Struct.pb.h
+  1개 파일이 복사되었습니다.
+  C:Struct.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Protocol.pb.h
+  1개 파일이 복사되었습니다.
+  C:Protocol.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Enum.pb.h
+  1개 파일이 복사되었습니다.
+  C:Enum.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Struct.pb.h
+  1개 파일이 복사되었습니다.
+  C:Struct.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Protocol.pb.h
+  1개 파일이 복사되었습니다.
+  C:Protocol.pb.cc
+  1개 파일이 복사되었습니다.
+  ClientPacketHandler.cpp
+  Enum.pb.cc
+  Protocol.pb.cc
+  Struct.pb.cc
   코드를 생성하고 있습니다...
   DummyClient.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Binary\Debug\DummyClient.exe

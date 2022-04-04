@@ -1,6 +1,35 @@
-﻿  GameServer.cpp
+﻿Struct.proto(4,1): warning G7CF62709: Import Enum.proto is unused.
+Protocol.proto(4,1): warning G7CF62709: Import Enum.proto is unused.
+  C:Enum.pb.h
+  1개 파일이 복사되었습니다.
+  C:Enum.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Struct.pb.h
+  1개 파일이 복사되었습니다.
+  C:Struct.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Protocol.pb.h
+  1개 파일이 복사되었습니다.
+  C:Protocol.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Enum.pb.h
+  1개 파일이 복사되었습니다.
+  C:Enum.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Struct.pb.h
+  1개 파일이 복사되었습니다.
+  C:Struct.pb.cc
+  1개 파일이 복사되었습니다.
+  C:Protocol.pb.h
+  1개 파일이 복사되었습니다.
+  C:Protocol.pb.cc
+  1개 파일이 복사되었습니다.
+  Enum.pb.cc
+  Protocol.pb.cc
+  Struct.pb.cc
+  코드를 생성하고 있습니다...
+  GameServer.cpp
   GameSession.cpp
   ServerPacketHandler.cpp
-C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\GameServer\ServerPacketHandler.cpp(17,2): warning C4065: switch문에 'default'가 있으나 'case' 레이블이 없습니다.
   코드를 생성하고 있습니다...
   GameServer.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Binary\Debug\GameServer.exe
