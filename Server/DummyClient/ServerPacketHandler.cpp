@@ -12,26 +12,17 @@ bool Handle_INVALID(PacketSessionRef& session, BYTE* buffer, int32 len)
 	return true;
 }
 
-// [ PKT_S_TEST ][BuffsListItem BuffsListItem BuffsListItem]
-void Handle_S_TEST(BYTE* buffer, int32 len)
+bool Handle_S_LOGIN(PacketSessionRef& session, Protocol::S_LOGIN& pkt)
 {
-	Protocol::S_TEST pkt;
+	return false;
+}
 
-	ASSERT_CRASH(pkt.ParseFromArray(buffer + sizeof(PacketHeader), len - sizeof(PacketHeader)));
+bool Handle_S_ENTER_GAME(PacketSessionRef& session, Protocol::S_ENTER_GAME& pkt)
+{
+	return false;
+}
 
-	cout << pkt.id() << " " << pkt.hp() << " " << pkt.attack() << endl;
-
-	cout << "BUFFSIZE : " << pkt.buffs_size() << endl;
-
-	for (auto& buf : pkt.buffs())
-	{
-		cout << "BUFINFO : " << buf.buffid() << " " << buf.remaintime() << endl;
-		cout << "VICTIMS : " << buf.victims_size() << endl;
-		
-		for (auto& vic : buf.victims())
-		{
-			cout << vic << " ";
-		}
-		cout << endl;
-	}
+bool Handle_S_CHAT(PacketSessionRef& session, Protocol::S_CHAT& pkt)
+{
+	return false;
 }

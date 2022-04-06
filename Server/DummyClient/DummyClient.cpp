@@ -18,6 +18,10 @@ public:
 	virtual void OnConnected() override
 	{
 		//cout << "Connected To Server" << endl;
+
+		Protocol::C_LOGIN	pkt;
+		auto sendBuffer = ServerPacketHandler::MakeSendBuffer(pkt);
+		Send(sendBuffer);
 	}
 
 	virtual void OnRecvPacket(BYTE* buffer, int32 len) override
