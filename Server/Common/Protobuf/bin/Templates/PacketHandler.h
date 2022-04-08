@@ -25,6 +25,7 @@ public:
 	{
 		for (int32 i = 0; i < UINT16_MAX; ++i)
 			GPacketHandler[i] = Handle_INVALID;
+
 {%- for pkt in parser.recv_pkt %}
 		GPacketHandler[PKT_{{pkt.name}}] = [](PacketSessionRef& session, BYTE* buffer, int32 len) {return HandlePacket<Protocol::{{pkt.name}}>(Handle_{{pkt.name}}, session, buffer, len); };
 {%- endfor %}
@@ -46,7 +47,7 @@ private:
 	static bool HandlePacket(ProcessFunc func, PacketSessionRef& session, BYTE* buffer, int32 len)
 	{
 		PacketType pkt;
-		if (pkt.ParseFromArray(buffer + sizeof(PacketHeader), len - sizeof(PacketHeader)))
+		if (pkt.ParseFromArray(buffer + sizeof(PacketHeader), len - sizeof(PacketHeader)) == false)
 			return false;
 
 		return func(session, pkt);
