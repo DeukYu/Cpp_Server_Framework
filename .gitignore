@@ -36,3 +36,7 @@
 .bin/
 .obj/
 x64/
+
+*.log
+*.pdb
+*.idb
