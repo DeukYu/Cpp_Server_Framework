@@ -16,22 +16,17 @@ void HealByValue(int64 target, int32 value)
 	cout << target << "한테 힐" << value << "만큼 줌" << endl;
 }
 
+class Knight
+{
+public:
+	void HealMe(int32 value)
+	{
+		cout << "HealMe! " << value << endl;
+	}
+};
+
 int main()
 {
-	// TEST JOB
-	{
-		FuncJob<void, int64, int32>	job(HealByValue, 100, 10);
-
-		job.Execute();
-	}
-	{
-		//Knight	k1;
-		
-	}
-
-
-	// JOB
-
 	ClientPacketHandler::Init();
 
 	ServerServiceRef service = MakeShared<ServerService>(
@@ -55,7 +50,7 @@ int main()
 
 	while (true)
 	{
-		GRoom.FlushJob();
+		GRoom->FlushJob();
 		this_thread::sleep_for(1ms);
 	}
 

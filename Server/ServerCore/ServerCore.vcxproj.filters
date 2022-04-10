@@ -16,6 +16,9 @@
     <Filter Include="Memory">
       <UniqueIdentifier>{f285a850-4481-4df3-b675-016d413f8fb1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Job">
+      <UniqueIdentifier>{40bff0f5-6cb3-4277-90bb-df4f5db61ca0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CorePch.h">
@@ -99,6 +102,15 @@
     <ClInclude Include="BufferReader.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="JobQueue.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="Job.h">
+      <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="JobSerializer.h">
+      <Filter>Job</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CorePch.cpp">
@@ -166,6 +178,15 @@
     </ClCompile>
     <ClCompile Include="BufferWriter.cpp">
       <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Job.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="JobQueue.cpp">
+      <Filter>Job</Filter>
+    </ClCompile>
+    <ClCompile Include="JobSerializer.cpp">
+      <Filter>Job</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

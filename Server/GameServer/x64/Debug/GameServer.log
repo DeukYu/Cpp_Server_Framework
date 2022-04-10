@@ -184,7 +184,6 @@
   GameServer.cpp
   GameSession.cpp
   GameSessionManager.cpp
-  Job.cpp
   Player.cpp
   ClientPacketHandler.cpp
   Room.cpp

@@ -8,6 +8,9 @@
   DeadLockProfiler.cpp
   IocpCore.cpp
   IocpEvent.cpp
+  Job.cpp
+  JobQueue.cpp
+  JobSerializer.cpp
   Listener.cpp
   Lock.cpp
   Memory.cpp
@@ -16,11 +19,11 @@
   RecvBuffer.cpp
   RefCounting.cpp
   SendBuffer.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
   Service.cpp
   Session.cpp
   SocketUtils.cpp
-  코드를 생성하고 있습니다...
-  컴파일하고 있습니다...
   ThreadManager.cpp
   코드를 생성하고 있습니다...
   ServerCore.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Libraries\Libs\ServerCore\Debug\ServerCore.lib
