@@ -9,8 +9,8 @@
   IocpCore.cpp
   IocpEvent.cpp
   Job.cpp
+  LockQueue.cpp
   JobQueue.cpp
-  JobSerializer.cpp
   Listener.cpp
   Lock.cpp
   Memory.cpp

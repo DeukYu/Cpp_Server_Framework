@@ -102,14 +102,14 @@
     <ClInclude Include="BufferReader.h">
       <Filter>Utils</Filter>
     </ClInclude>
-    <ClInclude Include="JobQueue.h">
-      <Filter>Job</Filter>
-    </ClInclude>
     <ClInclude Include="Job.h">
       <Filter>Job</Filter>
     </ClInclude>
-    <ClInclude Include="JobSerializer.h">
+    <ClInclude Include="JobQueue.h">
       <Filter>Job</Filter>
+    </ClInclude>
+    <ClInclude Include="LockQueue.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -185,8 +185,8 @@
     <ClCompile Include="JobQueue.cpp">
       <Filter>Job</Filter>
     </ClCompile>
-    <ClCompile Include="JobSerializer.cpp">
-      <Filter>Job</Filter>
+    <ClCompile Include="LockQueue.cpp">
+      <Filter>Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
