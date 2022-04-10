@@ -176,6 +176,7 @@
   C:ServerPacketHandler.h
   1개 파일이 복사되었습니다.
   계속하려면 아무 키나 누르십시오 . . . 
+  pch.cpp
   DummyClient.cpp
   ServerPacketHandler.cpp
   코드를 생성하고 있습니다...

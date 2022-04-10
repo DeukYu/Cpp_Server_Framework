@@ -11,16 +11,22 @@
 #include "Job.h"
 #include "Room.h"
 
+void HealByValue(int64 target, int32 value)
+{
+	cout << target << "한테 힐" << value << "만큼 줌" << endl;
+}
+
 int main()
 {
 	// TEST JOB
 	{
-		HealJob	healJob;
-		healJob._target = 1;
-		healJob._healValue = 10;
+		FuncJob<void, int64, int32>	job(HealByValue, 100, 10);
 
-		//
-		healJob.Execute();
+		job.Execute();
+	}
+	{
+		//Knight	k1;
+		
 	}
 
 
