@@ -11,19 +11,23 @@
 #include "Job.h"
 #include "Room.h"
 
-void HealByValue(int64 target, int32 value)
+enum
 {
-	cout << target << "한테 힐" << value << "만큼 줌" << endl;
-}
-
-class Knight
-{
-public:
-	void HealMe(int32 value)
-	{
-		cout << "HealMe! " << value << endl;
-	}
+	WORKER_TICK = 64
 };
+
+void DoWorkerJob(ServerServiceRef& service)
+{
+	while (true)
+	{
+		LEndTickCount = ::GetTickCount64() + WORKER_TICK;
+	
+		// 네트워크 입출력 처리 -> 인게임 로직까지 (패킷 핸들러에 의해)
+		service->GetIocpCore()->Dispatch();
+
+		ThreadManager::DoGlobalQueueWork();
+	}
+}
 
 int main()
 {
@@ -39,14 +43,17 @@ int main()
 
 	for (int32 i = 0; i < 5; i++)
 	{
-		GThreadManager->Launch([=]()
+		GThreadManager->Launch([&service]()
 			{
 				while (true)
 				{
-					service->GetIocpCore()->Dispatch();
+					DoWorkerJob(service);
 				}				
 			});
 	}
+
+	// Main Thread
+	DoWorkerJob(service);
 
 	GThreadManager->Join();
 }
