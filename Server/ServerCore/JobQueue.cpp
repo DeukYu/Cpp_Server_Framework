@@ -2,14 +2,14 @@
 #include "JobQueue.h"
 #include "GlobalQueue.h"
 
-void JobQueue::Push(JobRef&& job)
+void JobQueue::Push(JobRef job, bool pushOnly)
 {
 	const int32 prevCount = _jobCount.fetch_add(1);
 	_jobs.Push(job);
 
 	if (prevCount == 0)
 	{
-		if (LCurrentJobQueue == nullptr)
+		if (LCurrentJobQueue == nullptr && pushOnly == false)
 		{
 			Execute();
 		}

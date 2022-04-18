@@ -173,8 +173,11 @@
   1개 파일이 복사되었습니다.
   C:Protocol.pb.cc
   1개 파일이 복사되었습니다.
-  C:ServerPacketHandler.h
-  1개 파일이 복사되었습니다.
+  파일을 찾을 수 없습니다-ServerPacketHandler.h
+  0개 파일이 복사되었습니다.
+  C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Common\Protobuf\bin\*.pb.h을(를) 찾을 수 없습니다.
+  C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Common\Protobuf\bin\*.pb.cc을(를) 찾을 수 없습니다.
+  C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Common\Protobuf\bin\*.h을(를) 찾을 수 없습니다.
   계속하려면 아무 키나 누르십시오 . . . 
   pch.cpp
   DummyClient.cpp
