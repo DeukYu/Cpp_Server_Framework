@@ -1,14 +1,6 @@
 #pragma once
 #include "Types.h"
 
-/*-----------------
-	RW SpinLock
-------------------*/
-
-/*-----------------
-
-
-------------------*/
 class Lock
 {
 	enum : uint32
@@ -28,9 +20,7 @@ private:
 	Atomic<uint32>	_lockFlag = EMPTY_FLAG;
 	uint16			_writeCount = 0;
 };
-/*----------------
-	LockGuard
------------------*/
+
 class ReadLockGuard
 {
 public:

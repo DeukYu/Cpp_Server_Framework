@@ -7,9 +7,9 @@ void JobQueue::Push(JobRef job, bool pushOnly)
 	const int32 prevCount = _jobCount.fetch_add(1);
 	_jobs.Push(job);
 
-	if (prevCount == 0)
+	if (0 == prevCount)
 	{
-		if (LCurrentJobQueue == nullptr && pushOnly == false)
+		if (nullptr == LCurrentJobQueue && false == pushOnly)
 		{
 			Execute();
 		}
@@ -35,7 +35,7 @@ void JobQueue::Execute()
 			jobs[i]->Execute();
 
 		// 남은 일감이 0개라면 종료
-		if (_jobCount.fetch_sub(jobCount) == jobCount)
+		if (jobCount == _jobCount.fetch_sub(jobCount))
 		{
 			LCurrentJobQueue = nullptr;
 			return;
