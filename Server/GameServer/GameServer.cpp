@@ -10,6 +10,7 @@
 #include "Protocol.pb.h"
 #include "Job.h"
 #include "Room.h"
+#include "DBConnectionPool.h"
 
 enum
 {
@@ -34,9 +35,68 @@ void DoWorkerJob(ServerServiceRef& service)
 
 int main()
 {
-	GRoom->DoTimer(1000, [] {cout << "Hello 1000" << endl; });
-	GRoom->DoTimer(2000, [] {cout << "Hello 1000" << endl; });
-	GRoom->DoTimer(3000, [] {cout << "Hello 1000" << endl; });
+	ASSERT_CRASH(GDBConnectionPool->Connect(1, L"Driver={game_db_odbc};Server=(localdb)\\MSSQLLocalDB;Database=ServerDB;Trusted_Connection=Yes;"));
+
+	// Create Table
+	{
+		auto query = L"										\
+			DROP TABLE IF EXISTS[dbo].[Gold];				\
+			CREATE TABLE [dbo].[Gold]						\
+			(												\
+				[id]	INT NOT NULL PRIMARY KEY IDENTITY,	\
+				[gold]	INT NULL							\
+			);";
+		DBConnection* dbConn = GDBConnectionPool->Pop();
+		ASSERT_CRASH(dbConn->Execute(query));
+	}
+
+	// Add Data
+	for (int32 i = 0; i < 3; ++i)
+	{
+		DBConnection* dbConn = GDBConnectionPool->Pop();
+
+		dbConn->Unbind();
+
+		// 넘길 인자 바인딩
+		int32	gold = 100;
+		SQLLEN	len = 0;
+
+		// 넘길 인자 바인딩
+		ASSERT_CRASH(dbConn->BindParam(1, SQL_C_LONG, SQL_INTEGER, sizeof(gold), &gold, &len));
+		// SQL 실행
+		ASSERT_CRASH(dbConn->Execute(L"INSERT INTO [dbo].[Gold] ([gold]) VALUES(?)"));
+		GDBConnectionPool->Push(dbConn);
+	}
+
+	// Read
+	{
+		DBConnection* dbConn = GDBConnectionPool->Pop();
+
+		dbConn->Unbind();
+
+		int32 gold = 100;
+		SQLLEN	len = 0;
+
+		// 넘길 인자 바인딩
+		ASSERT_CRASH(dbConn->BindParam(1, SQL_C_LONG, SQL_INTEGER, sizeof(gold), &gold, &len));
+
+		int32 outId = 0;
+		SQLLEN outidLen = 0;
+		dbConn->BindCol(1, SQL_C_LONG, sizeof(outId), &outId, &outidLen);
+
+		int32 outGold = 0;
+		SQLLEN outGoldLen = 0;
+		dbConn->BindCol(1, SQL_C_LONG, sizeof(outGold), &outGold, &outGoldLen);
+
+		// SQL 실행
+		ASSERT_CRASH(dbConn->Execute(L"SELECT id, gold FROM [dbo].[Gold] WHERE gold = (?)"));
+
+		while (dbConn->Fetch())
+		{
+			cout << "Id: " << outId << "Gold: " << outGold << endl;
+		}
+		GDBConnectionPool->Push(dbConn);
+	}
 
 	ClientPacketHandler::Init();
 
