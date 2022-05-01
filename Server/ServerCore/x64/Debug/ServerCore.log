@@ -1,2 +1,44 @@
-﻿  XmlParser.cpp
+﻿  pch.cpp
+  Allocator.cpp
+  BufferReader.cpp
+  BufferWriter.cpp
+  ConsoleLog.cpp
+  CoreGlobal.cpp
+  CorePch.cpp
+  CoreTLS.cpp
+  DBBind.cpp
+  DBConnection.cpp
+  DBConnectionPool.cpp
+  DBModel.cpp
+  DBSynchronizer.cpp
+  DeadLockProfiler.cpp
+  FileUtils.cpp
+  GlobalQueue.cpp
+  IocpCore.cpp
+  IocpEvent.cpp
+  Job.cpp
+  JobTimer.cpp
+  LockQueue.cpp
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  JobQueue.cpp
+  Listener.cpp
+  Lock.cpp
+  Memory.cpp
+  MemoryPool.cpp
+  NetAddress.cpp
+  RecvBuffer.cpp
+  RefCounting.cpp
+  SendBuffer.cpp
+  Service.cpp
+  Session.cpp
+  SocketUtils.cpp
+  ThreadManager.cpp
+  XmlParser.cpp
+  코드를 생성하고 있습니다...
+ConsoleLog.obj : warning LNK4006: "public: __cdecl ConsoleLog::ConsoleLog(void)" (??0ConsoleLog@@QEAA@XZ)이(가) DBBind.obj에 이미 정의되어 있습니다. 초 정의가 무시됩니다.
+ConsoleLog.obj : warning LNK4006: "public: __cdecl ConsoleLog::~ConsoleLog(void)" (??1ConsoleLog@@QEAA@XZ)이(가) DBBind.obj에 이미 정의되어 있습니다. 초 정의가 무시됩니다.
+ConsoleLog.obj : warning LNK4006: "public: void __cdecl ConsoleLog::WriteStdOut(enum Color,wchar_t const *,...)" (?WriteStdOut@ConsoleLog@@QEAAXW4Color@@PEB_WZZ)이(가) DBBind.obj에 이미 정의되어 있습니다. 초 정의가 무시됩니다.
+ConsoleLog.obj : warning LNK4006: "public: void __cdecl ConsoleLog::WriteStdErr(enum Color,wchar_t const *,...)" (?WriteStdErr@ConsoleLog@@QEAAXW4Color@@PEB_WZZ)이(가) DBBind.obj에 이미 정의되어 있습니다. 초 정의가 무시됩니다.
+ConsoleLog.obj : warning LNK4006: "protected: void __cdecl ConsoleLog::SetColor(bool,enum Color)" (?SetColor@ConsoleLog@@IEAAX_NW4Color@@@Z)이(가) DBBind.obj에 이미 정의되어 있습니다. 초 정의가 무시됩니다.
   ServerCore.vcxproj -> C:\Users\LeeDeukYu\Desktop\github\GameServer\Server\Libraries\Libs\ServerCore\Debug\ServerCore.lib

@@ -39,10 +39,10 @@ class StlAllocator
 public:
 	using value_type = T;
 
-	StlAllocator() {}
+	StlAllocator() { }
 
 	template<typename Other>
-	StlAllocator(const StlAllocator<Other>&) {}
+	StlAllocator(const StlAllocator<Other>&) { }
 
 	T* allocate(size_t count)
 	{
@@ -54,4 +54,10 @@ public:
 	{
 		PoolAllocator::Release(ptr);
 	}
+
+	template<typename U>
+	bool operator==(const StlAllocator<U>&) { return true; }
+
+	template<typename U>
+	bool operator!=(const StlAllocator<U>&) { return false; }
 };

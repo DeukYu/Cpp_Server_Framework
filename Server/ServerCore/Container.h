@@ -26,7 +26,7 @@ template<typename Key, typename Type, typename Pred = less<Key>>
 using Map = map<Key, Type, Pred, StlAllocator<pair<const Key, Type>>>;
 
 template<typename Key, typename Pred = less<Key>>
-using Set = map<Key, Pred, StlAllocator<Key>>;
+using Set = set<Key, Pred, StlAllocator<Key>>;
 
 template<typename Type>
 using Deque = deque<Type, StlAllocator<Type>>;
