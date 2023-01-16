@@ -7,6 +7,9 @@
     <Filter Include="Network">
       <UniqueIdentifier>{0ed311f2-0493-41f2-8383-dcdac7d50858}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{8d6c2242-fc01-4fa4-a558-c978cd74e15d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CorePch.cpp">
@@ -17,6 +20,12 @@
     </ClCompile>
     <ClCompile Include="SocketUtils.cpp" />
     <ClCompile Include="NetAddress.cpp" />
+    <ClCompile Include="CoreGlobal.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="CoreTLS.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CorePch.h">
@@ -25,6 +34,15 @@
     <ClInclude Include="SocketUtils.h" />
     <ClInclude Include="NetAddress.h" />
     <ClInclude Include="Types.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreGlobal.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreMacro.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreTLS.h">
       <Filter>Main</Filter>
     </ClInclude>
   </ItemGroup>

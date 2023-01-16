@@ -15,6 +15,7 @@ struct SOCKETINFO
 
 DWORD WINAPI makeThread(LPVOID hIOCP);
 
+
 int main()
 {
     // Winsock Start - windock.dll 로드
@@ -68,6 +69,7 @@ int main()
     GetSystemInfo(&systemInfo);
     int threadCount = systemInfo.dwNumberOfProcessors * 2;
     unsigned long threadId;
+
     // - thread Handler 선언
     HANDLE* hThread = (HANDLE*)malloc(threadCount * sizeof(HANDLE));
     // - thread 생성

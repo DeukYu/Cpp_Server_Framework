@@ -1,39 +1,33 @@
 ﻿#include <iostream>
-#include <string>
+#include <thread>
 #include <format>
-#include "nlohmann/json.hpp"
 
-using json = nlohmann::json;
 using namespace std;
 
-std::string getTypeOfValue(json value) {
-    if (value.is_array()) return "array";
-    if (value.is_boolean()) return "boolean";
-    if (value.is_null()) return "null";
-    if (value.is_number_integer()) return "integer";
-    if (value.is_number_float()) return "double";
-    if (value.is_string()) return "string";
-    if (value.is_object()) return "object";
+int globalNum = 0;
+thread_local int tlNum = 0;
 
-    return "Unknown";
+void fn1()
+{
+	++globalNum;
+	++tlNum;
+	cout << format("<fn1> globalNum : {}", globalNum) << endl;
+	cout << format("<fn1> tlNum : {}", tlNum) << endl;
 }
 
+void fn2()
+{
+	++globalNum;
+	++tlNum;
+	cout << format("<fn2> globalNum : {}", globalNum) << endl;
+	cout << format("<fn2> tlNum : {}", tlNum) << endl;
+}
 int main()
 {
-    json temp;
-    string_view tbl1 = "tbl_test_info";
-    string_view tbl2 = "tbl_test_info2";
-    json j;
-    j["use"] = true;
-    j["id"] = 1;
-    temp[tbl1].emplace_back(j);
-    json j2;
-    j2["use"] = true;
-    j2["id"] = 2;
-    temp[tbl2].emplace_back(j2);
-    json j3;
-    j3["use"] = false;
-    j3["id"] = 3;
-    temp[tbl1].emplace_back(j3);
-    std::cout << "Hello World!\n";
+	thread t1(fn1);
+	thread t2(fn2);
+
+	t1.join();
+	t2.join();
+	return 0;
 }
