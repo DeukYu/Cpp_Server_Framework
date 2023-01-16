@@ -171,6 +171,7 @@
     <ClCompile Include="NetAddress.cpp" />
     <ClCompile Include="ServerCore.cpp" />
     <ClCompile Include="SocketUtils.cpp" />
+    <ClCompile Include="ThreadManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoreGlobal.h" />
@@ -179,6 +180,7 @@
     <ClInclude Include="CoreTLS.h" />
     <ClInclude Include="NetAddress.h" />
     <ClInclude Include="SocketUtils.h" />
+    <ClInclude Include="ThreadManager.h" />
     <ClInclude Include="Types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

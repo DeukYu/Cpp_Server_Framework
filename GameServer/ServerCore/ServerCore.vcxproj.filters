@@ -10,6 +10,9 @@
     <Filter Include="Utils">
       <UniqueIdentifier>{8d6c2242-fc01-4fa4-a558-c978cd74e15d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{268679d7-424e-4a24-9748-1a47c0e9d075}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CorePch.cpp">
@@ -25,6 +28,9 @@
     </ClCompile>
     <ClCompile Include="CoreTLS.cpp">
       <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ThreadManager.cpp">
+      <Filter>Thread</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +50,9 @@
     </ClInclude>
     <ClInclude Include="CoreTLS.h">
       <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadManager.h">
+      <Filter>Thread</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

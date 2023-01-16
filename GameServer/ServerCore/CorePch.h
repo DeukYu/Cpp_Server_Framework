@@ -1,13 +1,15 @@
 #pragma once
 
 #include "Types.h"
-#include "CoreGlobal.h"
+#include "CoreMacro.h"
 #include "CoreTLS.h"
+#include "CoreGlobal.h"
 
 #include <iostream>
 #include <format>
 #include <string_view>
 #include <thread>
+
 
 #include <WinSock2.h>
 #include <MSWSock.h>
