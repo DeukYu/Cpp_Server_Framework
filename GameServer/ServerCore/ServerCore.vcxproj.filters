@@ -32,6 +32,7 @@
     <ClCompile Include="ThreadManager.cpp">
       <Filter>Thread</Filter>
     </ClCompile>
+    <ClCompile Include="Lock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CorePch.h">
@@ -54,5 +55,6 @@
     <ClInclude Include="ThreadManager.h">
       <Filter>Thread</Filter>
     </ClInclude>
+    <ClInclude Include="Lock.h" />
   </ItemGroup>
 </Project>
