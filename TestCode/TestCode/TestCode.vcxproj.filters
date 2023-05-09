@@ -68,6 +68,7 @@
     <ClInclude Include="rapidjson\writer.h">
       <Filter>RapidJson</Filter>
     </ClInclude>
+    <ClInclude Include="uuid.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="RapidJson">

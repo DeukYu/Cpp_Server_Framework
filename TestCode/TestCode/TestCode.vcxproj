@@ -170,6 +170,7 @@
     <ClInclude Include="rapidjson\stringbuffer.h" />
     <ClInclude Include="rapidjson\uri.h" />
     <ClInclude Include="rapidjson\writer.h" />
+    <ClInclude Include="uuid.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
